@@ -14,7 +14,7 @@
                     'user' => 1
                 ]) --}}
                 
-                @livewire('counter')
+                @livewire('countries')
             </div>
         </div>
     </div>
