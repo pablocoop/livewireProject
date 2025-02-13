@@ -9,8 +9,9 @@
                     Nombre
                 </x-label>
                 <x-input class="w-full" 
-                        wire:model="title"/>
-                <x-input-error for="title"/>
+                        wire:model="postCreate.title"/>
+                         
+                <x-input-error for="postCreate.title"/>
             </div>
 
             <div class="mb-4">
@@ -20,8 +21,8 @@
                 </x-label>
 
                 <x-textarea class="w-full" 
-                            wire:model="content"></x-textarea>
-                <x-input-error for="content"/>
+                            wire:model="postCreate.content"></x-textarea>
+                <x-input-error for="postCreate.content"/>
 
             </div>
 
@@ -30,7 +31,7 @@
                     Categoría
                 </x-label>
 
-                <x-select class="w-full" wire:model="category_id">
+                <x-select class="w-full" wire:model="postCreate.category_id">
                     
                     <option value="" disabled>
                         Seleccione una categoría
@@ -45,7 +46,7 @@
 
                 </x-select>
 
-                <x-input-error for="category_id"/>
+                <x-input-error for="postCreate.category_id"/>
             </div>
 
 
@@ -58,7 +59,7 @@
                     @foreach ($tags as $tag)
                         <li>
                             <label>
-                                <x-checkbox type="checkbox" wire:model="selectedTags" value="{{$tag->id}}"/>
+                                <x-checkbox type="checkbox" wire:model="postCreate.tags" value="{{$tag->id}}"/>
                                 {{$tag->name}}
                             </label>
                         </li>
@@ -66,7 +67,7 @@
 
                 </ul>
 
-                <x-input-error for="selectedTags"/>
+                <x-input-error for="postCreate.tags"/>
 
             </div>
 
@@ -121,8 +122,8 @@
                             Nombre
                         </x-label>
                         <x-input class="w-full" 
-                                wire:model="postEdit.title" 
-                                required/>
+                                wire:model="postEdit.title"/>
+                        <x-input-error for="postEdit.title"/>
                     </div>
         
                     <div class="mb-4">
@@ -132,9 +133,8 @@
                         </x-label>
         
                         <x-textarea class="w-full" 
-                                    wire:model="postEdit.content"
-                                    required></x-textarea>
-        
+                                    wire:model="postEdit.content"></x-textarea>
+                        <x-input-error for="postEdit.content" />
         
                     </div>
         
