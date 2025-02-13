@@ -92,7 +92,7 @@
                             Editar
                         </x-button>
     
-                        <x-danger-button>
+                        <x-danger-button wire:click="destroy({{$post->id}})">
                             Eliminar
                         </x-danger-button>
                     </div>
@@ -113,12 +113,13 @@
                     <div class="dark:bg-gray-800 dark:text-white shadow rounded-lg p-6">
                         
                         <form wire:submit="update">
+
                             <div class="mb-4">
                                 <x-label>
                                     Nombre
                                 </x-label>
                                 <x-input class="w-full" 
-                                        wire:model="title" 
+                                        wire:model="postEdit.title" 
                                         required/>
                             </div>
                 
@@ -129,7 +130,7 @@
                                 </x-label>
                 
                                 <x-textarea class="w-full" 
-                                            wire:model="content"
+                                            wire:model="postEdit.content"
                                             required></x-textarea>
                 
                 
@@ -140,7 +141,7 @@
                                     Categoría
                                 </x-label>
                 
-                                <x-select class="w-full" wire:model="category_id">
+                                <x-select class="w-full" wire:model="postEdit.category_id">
                                     
                                     <option value="" disabled>
                                         Seleccione una categoría
@@ -166,7 +167,7 @@
                                     @foreach ($tags as $tag)
                                         <li>
                                             <label>
-                                                <x-checkbox type="checkbox" wire:model="selectedTags" value="{{$tag->id}}"/>
+                                                <x-checkbox type="checkbox" wire:model="postEdit.tags" value="{{$tag->id}}"/>
                                                 {{$tag->name}}
                                             </label>
                                         </li>
