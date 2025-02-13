@@ -18,6 +18,8 @@ class Countries extends Component
 
     public $count;
 
+    public $open = true;
+
     
 
     public function save(){
