@@ -9,11 +9,12 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
 
-                @livewire('create-post', [
+                {{-- @livewire('create-post', [
                     'title' => "Hola Mundo pasado desde la vista",
                     'user' => 1
-                ])
-            
+                ]) --}}
+                
+                @livewire('counter')
             </div>
         </div>
     </div>
