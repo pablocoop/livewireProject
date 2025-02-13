@@ -37,6 +37,14 @@ class Formulario extends Component
     }
 
     public function save(){
+
+        $this->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'category_id' => 'required|exists:categories,id',
+            'selectedTags' => 'required|array',
+        ]);
+
         /* $post = Post::create([
             'category_id' => $this->category_id,
             'title' => $this->title,
@@ -89,7 +97,7 @@ class Formulario extends Component
     }
 
     public function destroy($postId){
-        
+
         $post = Post::find($postId);
         $post->delete();
         $this->posts = Post::all(); 
