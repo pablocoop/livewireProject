@@ -3,6 +3,13 @@
 
     <div class="dark:bg-gray-800 dark:text-white shadow rounded-lg p-6 mb-8">
 
+        @if ($postCreate['image'])
+
+            <img src="{{$postCreate['image']->temporaryUrl()}}">
+            
+        @endif
+
+
         <form wire:submit="save">
             <div class="mb-4">
                 <x-label>
@@ -13,6 +20,8 @@
                          
                 <x-input-error for="postCreate.title"/>
             </div>
+
+
 
             <div class="mb-4">
 
@@ -47,6 +56,35 @@
                 </x-select>
 
                 <x-input-error for="postCreate.category_id"/>
+            </div>
+
+            <div class="mb-4">
+                <x-label>
+                    Imagen
+                </x-label>
+                
+                <div
+                    x-data="{ uploading: false, progress: 0 }"
+                    x-on:livewire-upload-start="uploading = true"
+                    x-on:livewire-upload-finish="uploading = false"
+                    x-on:livewire-upload-cancel="uploading = false"
+                    x-on:livewire-upload-error="uploading = false"
+                    x-on:livewire-upload-progress="progress = $event.detail.progress"
+                >
+                    <input 
+                        type="file" 
+                        wire:model="postCreate.image"
+                        wire:key="{{$imageKey}}" 
+                        class="dark:bg-gray-800 dark:text-white" >
+                    
+                    <!-- Progress Bar -->
+                    <div x-show="uploading">
+                        <div x-text="progress">
+                        </div>
+                        <progress max="120" x-bind:value="progress"></progress>
+                    </div>
+                </div>
+
             </div>
 
 

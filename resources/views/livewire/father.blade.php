@@ -7,12 +7,16 @@
 
 
     <hr class="my-6">
+
+    
     
     
     <div>
-        {{-- @livewire('children', [
-            'name' => $name
-        ]) --}}
-        <livewire:children wire:model="name"/>
+        @livewire('counter', [], key('contador-1'))
+        @livewire('counter', [], key('contador-2'))
+        @livewire('counter', [], key('contador-3'))
+        @livewire('counter', [], key('contador-4'))
+        @livewire('counter', [], key('contador-5'))
+
     </div>
 </div>

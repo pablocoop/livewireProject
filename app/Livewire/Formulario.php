@@ -7,11 +7,16 @@ use App\Models\Post;
 use App\Models\Tag;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Formulario extends Component
 {
+    use WithFileUploads;
 
     public $categories, $tags;
+
+    public $imageKey;
+    public $image;
 
 
     /* #[Rule('required', message:'El campo categoría es requerido')]
@@ -37,7 +42,8 @@ class Formulario extends Component
         'title' => '',
         'content' > '',
         'category_id' => '',
-        'tags' => []
+        'tags' => [],
+        'image' => NULL
     ];
 
     public $posts;
@@ -50,7 +56,8 @@ class Formulario extends Component
         'title' => '',
         'content' > '',
         'category_id' => '',
-        'tags' => []
+        'tags' => [],
+        ''
     ];
     
     
@@ -59,7 +66,8 @@ class Formulario extends Component
             'postCreate.title' => 'required',
             'postCreate.content' => 'required',
             'postCreate.category_id' => 'required|exists:categories,id',
-            'postCreate.tags' => 'required|array'
+            'postCreate.tags' => 'required|array',
+            'postCreate.image' => 'nullable|image|max:1024'
         ];
     }
 
@@ -99,7 +107,7 @@ class Formulario extends Component
     }
 
     public function dehydrate(){
-        
+
     }
 
     public function save(){
@@ -123,10 +131,17 @@ class Formulario extends Component
             'content' => $this->postCreate['content'],
             'category_id' => $this->postCreate['category_id']
         ]);
-
         $post->tags()->attach($this->postCreate['tags']);
 
+        if ($this->postCreate['image']){
+            $post->image_path = $this->postCreate['image']->store('posts'); 
+            $post->save();
+        }
+
+
         $this->reset(['postCreate']);
+        $this->imageKey = rand();
+
 
         $this->posts = Post::all();
 
