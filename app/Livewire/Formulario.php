@@ -81,6 +81,27 @@ class Formulario extends Component
         $this->posts = Post::all();
     }
 
+    //alt: public function updated //updating
+    public function updating($property, $value){
+        if ($property == 'postCreate.category_id') {
+            if ($value > 3) {
+                throw new \Exception("No puedes seleccionar esta categoría");
+            }
+        }
+    }
+
+    public function updated($property, $value){
+
+    }
+
+    public function hydrate(){
+
+    }
+
+    public function dehydrate(){
+        
+    }
+
     public function save(){
         $this->validate();
         /* $this->validate([

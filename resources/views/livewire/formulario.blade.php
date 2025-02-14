@@ -31,7 +31,7 @@
                     Categoría
                 </x-label>
 
-                <x-select class="w-full" wire:model="postCreate.category_id">
+                <x-select class="w-full" wire:model.live="postCreate.category_id">
                     
                     <option value="" disabled>
                         Seleccione una categoría
