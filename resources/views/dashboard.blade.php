@@ -8,17 +8,14 @@
     <div class="py-12">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
-
-                {{-- @livewire('create-post', [
-                    'title' => "Hola Mundo pasado desde la vista",
-                    'user' => 1
-                ]) --}}
                 
-                @livewire('formulario')
+                {{-- @livewire('formulario')
 
                 <div class="mt-4">
                     @livewire('comments')
-                </div>
+                </div> --}}
+
+                @livewire('father')
 
             </div>
         </div>
