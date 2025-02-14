@@ -15,6 +15,11 @@
                 ]) --}}
                 
                 @livewire('formulario')
+
+                <div class="mt-4">
+                    @livewire('comments')
+                </div>
+
             </div>
         </div>
     </div>

@@ -198,4 +198,15 @@
             </x-slot>
         </x-dialog-modal>
     </form>
+
+    @push('js')
+        <script> 
+                Livewire.on('alert', function(comment){
+                    console.log(comment);
+                });
+        </script>
+    @endpush
+
+
+
 </div>
